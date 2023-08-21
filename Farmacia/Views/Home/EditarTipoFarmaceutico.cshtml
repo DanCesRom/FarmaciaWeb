@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "EditarTipoFarmaceutico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Tipo Farmaceutico";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+
+<form action="/Home/UpdateTipoFarmaceutico" method="post" id="editTipoFarmaceutico">
+
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input type="number" name="id_tf_txt" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tipo de Farmaceutico</label>
+        <input type="text" name="tipo_farmaceutico_txt" class="form-control" value="@Request.QueryString["tipofarmaceutico"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Categoria</label>
+        <input type="text" name="categoria_txt" class="form-control" value="@Request.QueryString["categoria"]" required />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Home/Consultar_Tipo_Farmaceutico"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editTipoFarmaceutico" class="btn btn-success">Update</button>
+    </div>
+
+
+</form>
+
+

@@ -1,0 +1,110 @@
+﻿@model List<CapaDatos.Database.Farmaceutico>
+
+@{
+    ViewBag.Title = "Consultar_Farmaceutico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Farmaceutico Details";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+@if (TempData["FarmaceuticoDeletedMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FarmaceuticoDeletedMessage"]
+    </div>
+}
+
+@if (TempData["FarmaceuticoUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FarmaceuticoUpdateMessage"]
+    </div>
+}
+
+@if (TempData["FarmaceuticoRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FarmaceuticoRegisterMessage"]
+    </div>
+}
+
+
+@if (NivelAcceso == "1")
+{
+
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <p>Total Farmaceutico: @Model.Count()</p>
+
+    <a href="https://localhost:44304/AddInfo/FarmaceuticoAdd"> <btn class="btn" style="color:white;  background: black">Agregar Farmaceutico</btn> </a>
+    <br />
+    <br />
+
+    <form action="/Home/DelFarmaceutico/" method="post" id="formFarmaceutico">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>ID Farmaceutico</th>
+                    <th>Nombre</th>
+                    <th>Fecha de Vencimiento</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>ID Tipo Farmaceutico</th>
+                    <th>ID Farmacia</th>
+                    <th>Accion</th>
+                    <th>Disponibilidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var farmaceutico in Model) // Quitamos el "@" aquí
+                    {
+
+                        string disponibilidad = "";
+                        if (farmaceutico.Cantidad > 5) { disponibilidad = "Disponible"; }
+                        if (farmaceutico.Cantidad <= 5 && farmaceutico.Cantidad >=1) { disponibilidad = "Reservado"; }
+                        if (farmaceutico.Cantidad == 0) { disponibilidad = "No Disponible"; }
+
+
+                        <tr>
+                            <td>@farmaceutico.IDfarmaceutico</td>
+                            <td>@farmaceutico.Nombre</td>
+                            <td>@farmaceutico.Fechavencimiento</td>
+                            <td>@farmaceutico.Cantidad</td>
+                            <td>@farmaceutico.Precio</td>
+                            <td>@farmaceutico.ID_TF </td>
+                            <td>@farmaceutico.IDfarmacia</td>
+                            <td>@disponibilidad</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/Home/EditarFarmaceutico?id=@farmaceutico.IDfarmaceutico&nombre=@farmaceutico.Nombre&fechavencimiento=@farmaceutico.Fechavencimiento&cantidad=@farmaceutico.Cantidad&precio=@farmaceutico.Precio&idtf=@farmaceutico.ID_TF&idfarmacia=@farmaceutico.IDfarmacia" class="btn btn-primary">Edit</a>
+                                    <button type="submit" name="id" value="@farmaceutico.IDfarmaceutico" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            <div>
+                                No Farmaceuticos Available at this moment!
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+}
+
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}
+

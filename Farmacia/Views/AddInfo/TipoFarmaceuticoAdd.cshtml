@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "TipoFarmaceuticoAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Tablas</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelEmpleados">
+        <div class="panel-heading">Agregar Tipo Farmaceuticos:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <form action="/AddInfo/registrarTipoFarmacia/" method="post" id="formTipoFarmacia">
+                <a>Tipo de Farmaceutico<input type="text" name="tipofarmaceutico_txt" id="tipofarmaceutico.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Categoria<input type="text" name="categoriafarmaceutico_txt" id="categoriafarmaceutico.txt" class="form-control" formmethod="post" required></a> <br />
+
+                <a href="https://localhost:44304/Home/Consultar_Tipo_Farmaceutico"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+                <input for="formTipoFarmacia" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+            </form>
+        </div>
+
+        </div>
+    </div>
+

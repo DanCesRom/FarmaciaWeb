@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutSafe.cshtml";
+}
+
+@if (TempData["ClienteRegisterUserMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ClienteRegisterUserMessage"]
+    </div>
+}
+
+
+
+<html>
+<head>
+    <title>Login Component</title>
+
+</head>
+<body>
+    <div style="display:flex; flex-direction: column; align-items: center">
+
+        <div id="circle" class="circle" , style="width: 150px; height: 150px; border-radius: 50%; background-image: url(https://i.gifer.com/fxVE.gif); background-size: cover; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; font-size: 60px; color: ghostwhite "></div>
+
+        <form action="/Seguridad/LoginUsuario" method="post" class="form-container" id="logins">
+
+            <input type="text" name="user" placeholder="Email/Username" style="padding: 10px; border: 1px solid #000000; border-radius: 6px; margin-bottom: 10px; width: 260px; align-items: center;" formmethod="post" onkeyup="updateCircleText(this.value)" required> <br>
+            <input type="password" name="password" placeholder="Password" style="padding: 10px; border: 1px solid #000000; border-radius: 6px; margin-bottom: 10px; width: 260px; align-items: center;" formmethod="post" required> <br>
+
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <p style="color: #FF2B00; margin-bottom: 8px; font-weight: bold">@ViewBag.ErrorMessage</p>
+            }
+
+            <a href="https://localhost:44304/Seguridad/Register" style="text-decoration: none; color: #333; font-size: 14px;">Registrarse</a> <br />
+            <input for="logins" type="submit" value="Log In" class="btn btn-success" style="background: green; text-align:center">
+
+        </form>
+
+
+    </div>
+
+    <script>
+        function updateCircleText(value) {
+            document.getElementById("circle").innerText = value.charAt(0).toUpperCase();
+        }
+
+    </script>
+
+
+</body>
+</html>

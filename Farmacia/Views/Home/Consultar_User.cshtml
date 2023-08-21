@@ -1,0 +1,101 @@
+﻿@model List<CapaDatos.Database.User>
+
+@{
+    ViewBag.Title = "Consultar_User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Users Details";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+@if (TempData["UserDeletedMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["UserDeletedMessage"]
+    </div>
+}
+
+@if (TempData["UserUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["UserUpdateMessage"]
+    </div>
+}
+
+@if (TempData["UserRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["UserRegisterMessage"]
+    </div>
+}
+
+@if (TempData["UserRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["UserRegisterErrorMessage"]
+    </div>
+}
+
+@if (NivelAcceso == "1")
+{
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <p>Total de Usuarios: @Model.Count()</p>
+
+
+    <a href="https://localhost:44304/AddInfo/UsersAdd"> <btn class="btn" style="color:white;  background: black">Agregar Usuarios</btn> </a>
+    <br />
+    <br />
+
+    <form action="/Home/delUser/" method="post" id="formUser">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>ID Usuarios</th>
+                    <th>Usuarios</th>
+                    <th>Contraseñas</th>
+                    <th>Nivel de Acceso</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var usuario in Model)
+                    {
+                        <tr>
+                            <td>@usuario.Id_user</td>
+                            <td>@usuario.Usuario</td>
+                            <td>@usuario.Clave</td>
+                            <td>@usuario.CodNivel</td>
+                            <td>
+                                <div class="btn-group-lg btn-group-sm">
+                                    <a href="/Home/EditarUser?id=@usuario.Id_user&user=@usuario.Usuario&codnivel=@usuario.CodNivel" class="btn btn-primary">Edit</a>
+                                    <button type="submit" name="id" value="@usuario.Id_user" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            <div>
+                                No Users Available at this moment!
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+}
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}
+
+

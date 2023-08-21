@@ -1,0 +1,102 @@
+﻿@model List<CapaDatos.Database.Empleado>
+
+@{
+    ViewBag.Title = "Consultar_Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Employee Details";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+
+@if (TempData["EmpleadosDeletedMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["EmpleadosDeletedMessage"]
+    </div>
+}
+
+@if (TempData["EmpleadoUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["EmpleadoUpdateMessage"]
+    </div>
+}
+
+@if (TempData["EmpleadoRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["EmpleadoRegisterMessage"]
+    </div>
+}
+
+@if (TempData["EmpleadoRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["EmpleadoRegisterErrorMessage"]
+    </div>
+}
+
+@if (NivelAcceso == "1")
+{
+
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <p>Total Employees: @Model.Count()</p>
+
+    <a href="https://localhost:44304/AddInfo/EmpleadosAdd"> <btn class="btn" style="color:white;  background: black">Agregar Empleado</btn> </a>
+    <br />
+    <br />
+
+    <form action="/Home/DelEmpleados/" method="post" id="formEmpleado">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>ID Empleado</th>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>ID Farmacia</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var employee in Model) // Quitamos el "@" aquí
+                    {
+                        <tr>
+                            <td>@employee.IDempleado</td>
+                            <td>@employee.DNI</td>
+                            <td>@employee.Nombre</td>
+                            <td>@employee.IDfarmacia</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/Home/EditarEmpleado?id=@employee.IDempleado&dni=@employee.DNI&nombre=@employee.Nombre&idfarmacia=@employee.IDfarmacia" class="btn btn-primary">Edit</a>
+                                    <button type="submit" name="id" value="@employee.IDempleado" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            <div>
+                                No Employees Available at this moment!
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+}
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}
+
+

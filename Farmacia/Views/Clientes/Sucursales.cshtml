@@ -1,0 +1,50 @@
+﻿@model List<CapaDatos.Database.Farmacia>
+
+@{
+    ViewBag.Title = "Sucursales";
+    Layout = "~/Views/Shared/_Layout0.cshtml";
+    ViewData["Title"] = "Farmacia Details";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<p>Total Farmacia: @Model.Count()</p>
+
+<table class="table table-responsive table-hover table-bordered">
+    <thead>
+        <tr class="table-active">
+            <th>Farmacia</th>
+            <th>Calle</th>
+            <th>Sector</th>
+            <th>Provincia</th>
+            <th>Telefono</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var farmacia in Model) // Quitamos el "@" aquí
+            {
+                <tr>
+                    <td>@farmacia.IDfarmacia</td>
+                    <td>@farmacia.Calle</td>
+                    <td>@farmacia.Sector</td>
+                    <td>@farmacia.Provincia</td>
+                    <td>@farmacia.Telefono</td>
+                    <td>@farmacia.Estado</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">
+                    <div>
+                        No Hay Farmacias Disponibles en este momento!
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

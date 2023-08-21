@@ -1,0 +1,58 @@
+﻿
+@model List<CapaDatos.Database.User>
+@{
+    ViewBag.Title = "EditarFarmacia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Tipo Farmacia";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+
+<form action="/Home/UpdateFarmacacia" method="post" id="editFarmacia">
+
+    <div class="mb-3">
+        <label class="form-label">Id Farmacia</label>
+        <input type="number" name="id_farmacia_txt" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Calle</label>
+        <input type="text" name="calle_txt" class="form-control" value="@Request.QueryString["calle"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Sector</label>
+        <input type="text" name="sector_txt" class="form-control" value="@Request.QueryString["sector"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Provincia</label>
+        <input type="text" name="provincia_txt" class="form-control" value="@Request.QueryString["provincia"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Telefono</label>
+        <input type="text" name="telefono_txt" class="form-control" value="@Request.QueryString["telefono"]" required />
+    </div>
+
+    <div class="mb-3">
+        <a>Estado</a>
+        <select class="form-control" name="estado_txt">
+            <option value="Cerrado" @(Request.QueryString["estado"] == "Cerrado" ? "selected" : "")>Cerrado</option>
+            <option value="Abierto" @(Request.QueryString["estado"] == "Abierto" ? "selected" : "")>Abierto</option>
+        </select>
+        <br />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Home/Consultar_Farmacia"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editFarmacia" class="btn btn-success">Update</button>
+    </div>
+
+
+</form>
+
+

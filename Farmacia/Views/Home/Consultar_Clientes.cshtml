@@ -1,0 +1,100 @@
+﻿@model List<CapaDatos.Database.Cliente>
+
+@{
+    ViewBag.Title = "Consultar_Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Client Details";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+@if (TempData["ClientesDeletedMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ClientesDeletedMessage"]
+    </div>
+}
+
+@if (TempData["ClienteUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ClienteUpdateMessage"]
+    </div>
+}
+
+@if (TempData["ClienteRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ClienteRegisterMessage"]
+    </div>
+}
+
+@if (TempData["ClienteRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ClienteRegisterErrorMessage"]
+    </div>
+}
+
+
+
+@if (NivelAcceso == "1")
+{
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <p>Total Client: @Model.Count()</p>
+
+    <a href="https://localhost:44304/AddInfo/ClienteAdd"> <btn class="btn" style="color:white;  background: black">Agregar Cliente</btn> </a>
+    <br />
+    <br />
+
+    <form action="/Home/DelClientes/" method="post" id="formCliente">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>ID Cliente</th>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var cliente in Model) // Quitamos el "@" aquí
+                    {
+                        <tr>
+                            <td>@cliente.IDcliente</td>
+                            <td>@cliente.DNI</td>
+                            <td>@cliente.Nombre</td>
+                            <td>@cliente.Edad</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/Home/EditarCliente?id=@cliente.IDcliente&dni=@cliente.DNI&nombre=@cliente.Nombre&edad=@cliente.Edad" class="btn btn-primary">Edit</a>
+                                    <button type="submit" name="id" value="@cliente.IDcliente" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            <div>
+                                No Employees Available at this moment!
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}
+
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}

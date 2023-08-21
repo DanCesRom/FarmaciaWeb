@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "FacturaAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Tablas</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelEmpleados">
+        <div class="panel-heading">Agregar Facturas:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+        <div class="col-lg-4">
+            <form action="/AddInfo/registrarFactura/" method="post" id="formTipoFarmacia">
+                <a>Codigo de Factura<input type="text" name="codigodefactura_txt" id="codigodefactura.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Monto<input type="number" name="monto_txt" id="monto.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>ID del Cliente<input type="number" name="idcliente_txt" id="idcliente.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>ID del Empleado<input type="number" name="idempleado_txt" id="idempleado.txt" class="form-control" formmethod="post" required></a> <br />
+
+                <a href="https://localhost:44304/Home/Consultar_Factura"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+                <input for="formTipoFarmacia" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+

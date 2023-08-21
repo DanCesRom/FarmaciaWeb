@@ -1,0 +1,105 @@
+﻿@model List<CapaDatos.Database.Farmacia>
+
+@{
+    ViewBag.Title = "Consultar_Farmacia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Farmacia Details";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+@if (TempData["FarmaciaDeletedMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FarmaciaDeletedMessage"]
+    </div>
+}
+
+@if (TempData["FarmaciaUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FarmaciaUpdateMessage"]
+    </div>
+}
+
+@if (TempData["FarmaciaRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FarmaciaRegisterMessage"]
+    </div>
+}
+
+@if (TempData["FarmaciaRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["FarmaciaRegisterErrorMessage"]
+    </div>
+}
+
+
+
+@if (NivelAcceso == "1")
+{
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <p>Total Farmacia: @Model.Count()</p>
+
+    <a href="https://localhost:44304/AddInfo/FarmaciaAdd"> <btn class="btn" style="color:white;  background: black">Agregar Farmacia</btn> </a>
+    <br />
+    <br />
+
+    <form action="/Home/DelFarmacia/" method="post" id="formFarmacia">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>ID Farmacia</th>
+                    <th>Calle</th>
+                    <th>Sector</th>
+                    <th>Provincia</th>
+                    <th>Telefono</th>
+                    <th>Estado</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var farmacia in Model) // Quitamos el "@" aquí
+                    {
+                        <tr>
+                            <td>@farmacia.IDfarmacia</td>
+                            <td>@farmacia.Calle</td>
+                            <td>@farmacia.Sector</td>
+                            <td>@farmacia.Provincia</td>
+                            <td>@farmacia.Telefono</td>
+                            <td>@farmacia.Estado</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/Home/EditarFarmacia?id=@farmacia.IDfarmacia&calle=@farmacia.Calle&sector=@farmacia.Sector&provincia=@farmacia.Provincia&telefono=@farmacia.Telefono&estado=@farmacia.Estado" class="btn btn-primary">Edit</a>
+                                    <button type="submit" name="id" value="@farmacia.IDfarmacia" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            <div>
+                                No Farmacias Available at this moment!
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}
+
+

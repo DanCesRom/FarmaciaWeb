@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "EditarFarmaceutico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Farmaceutico";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+
+<form action="/Home/UpdateFarmaceutico" method="post" id="editFarmaceutico">
+
+    <div class="mb-3">
+        <label class="form-label">Id Farmaceutico</label>
+        <input type="number" name="id_farmaceutico" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre_txt" class="form-control" value="@Request.QueryString["nombre"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Fecha de Vencimiento</label>
+        <input type="" name="fechadevencimiento_txt" class="form-control" value="@Request.QueryString["fechavencimiento"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Cantidad</label>
+        <input type="number" name="cantidad_txt" value="@Request.QueryString["cantidad"]" class="form-control" min="0" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Precio</label>
+        <input type="number" name="precio_txt" value="@Request.QueryString["precio"]" class="form-control" min="1" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Id Tipo Farmaceutico</label>
+        <input type="number" name="id_tf_txt" value="@Request.QueryString["idtf"]" class="form-control" min="1" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Id Farmacia</label>
+        <input type="number" name="idfarmacia" value="@Request.QueryString["idfarmacia"]" min="1" class="form-control" required />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Home/Consultar_Farmaceutico"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editFarmaceutico" class="btn btn-success">Update</button>
+    </div>
+
+</form>
+
+
+
+

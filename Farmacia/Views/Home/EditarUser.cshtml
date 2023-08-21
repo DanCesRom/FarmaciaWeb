@@ -1,0 +1,43 @@
+﻿@model List<CapaDatos.Database.User>
+@{
+    ViewBag.Title = "EditarUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Usuarios";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+
+<form action="/Home/updateUsuarios" method="post" id="editUser">
+
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input type="number" name="idusuario_txt" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Usuarios</label>
+        <input type="text" name="usuario_txt" class="form-control" value="@Request.QueryString["user"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="text" name="clave_txt" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nivel de Acceso</label>
+        <input type="number" name="idnivel_txt" class="form-control" value="@Request.QueryString["codnivel"]" required />
+    </div>
+
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Home/Consultar_User"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editUser" class="btn btn-success">Update</button>
+    </div>
+
+</form>
+
+

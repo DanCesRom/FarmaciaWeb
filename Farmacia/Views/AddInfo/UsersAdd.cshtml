@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "UserAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Tablas</h2>
+
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelEmpleados">
+        <div class="panel-heading">Agregar Usuarios:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+        <div class="col-lg-4">
+            <form action="/AddInfo/registrarUsuarios/" method="post" id="formUser">
+                <a>Usuario<input type="text" name="idusuario_txt" id="idusuario.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Contraseña<input type="text" name="idclave_txt" id="idclave.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Nivel de Acceso<input type="number" name="idnivel_txt" id="idnivel.txt" class="form-control" formmethod="post" min="0" max="1"  required></a> <br />
+
+                <a href="https://localhost:44304/Home/Consultar_User"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+                <input for="formUser" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+

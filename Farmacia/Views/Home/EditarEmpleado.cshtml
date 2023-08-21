@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "EditarEmpleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Empleado";
+}
+
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+<form action="/Home/UpdateEmpleado" method="post" id="editEmpleado">
+
+    <div class="mb-3">
+        <label class="form-label">Id Empleado</label>
+        <input type="number" name="id_empleado" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">DNI</label>
+        <input type="text" name="dni_txt" class="form-control" value="@Request.QueryString["dni"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre_txt" class="form-control" value="@Request.QueryString["nombre"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Id Farmacia</label>
+        <input type="number" name="idfarmacia_txt" value="@Request.QueryString["idfarmacia"]" class="form-control" required />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Home/Consultar_Empleados"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editEmpleado" class="btn btn-success">Update</button>
+    </div>
+
+
+</form>
+
+
+
+

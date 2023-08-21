@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9" name="DbLibraryEntity">
+  <DataContextMoniker Name="/DbLibraryEntityDataContext" />
+  <nestedChildShapes>
+    <classShape Id="d18b76ce-9099-4452-b081-550af5421d4c" absoluteBounds="3.5, 7.125, 2, 1.6801985950271288">
+      <DataClassMoniker Name="/DbLibraryEntityDataContext/Cliente" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0d11710-d14e-4ed2-a423-a49b78a35d7b" absoluteBounds="3.515, 7.585, 1.9700000000000002, 1.1201985950271287" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77d20dfb-edfb-4b85-968f-93e76801c46a" absoluteBounds="6.75, 7.125, 2, 1.6801985950271288">
+      <DataClassMoniker Name="/DbLibraryEntityDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="63dfca4c-1117-4e3a-8a6b-30e623b21a9f" absoluteBounds="6.765, 7.585, 1.9700000000000002, 1.1201985950271287" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="71b14a7a-9561-4543-a24c-2a40ac2bfb3f" absoluteBounds="3.5, 4.125, 2, 1.6801985950271288">
+      <DataClassMoniker Name="/DbLibraryEntityDataContext/Empleado" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a82031a-7ffc-48c4-8499-0457c62cefe9" absoluteBounds="3.515, 4.585, 1.9700000000000002, 1.1201985950271287" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6b5aa213-b26c-4965-8835-b052a787a7de" absoluteBounds="6.25, 4, 2, 1.8909733395775157">
+      <DataClassMoniker Name="/DbLibraryEntityDataContext/Factura" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99b80a19-3c76-4572-9069-53a740caf628" absoluteBounds="6.265, 4.46, 1.9700000000000002, 1.3309733395775158" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5822c5ae-8743-40a7-a249-fef345524375" absoluteBounds="3.5, 0.75, 2, 2.31252282867829">
+      <DataClassMoniker Name="/DbLibraryEntityDataContext/Farmaceutico" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4eea912e-faa0-4c80-a943-c0a0ea254933" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.75252282867829" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6b1cde5d-3a88-4945-894a-d47518d80504" absoluteBounds="0.75, 3.875, 2, 2.1017480841279021">
+      <DataClassMoniker Name="/DbLibraryEntityDataContext/Farmacia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2f9ecdea-eebc-4741-a7e3-737b0bf5015e" absoluteBounds="0.765, 4.335, 1.9700000000000002, 1.541748084127903" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c06ca6a2-cc05-482d-bdef-ef1458137342" absoluteBounds="0.75, 1.125, 2, 1.4694238504767416">
+      <DataClassMoniker Name="/DbLibraryEntityDataContext/Tipo_Farmaceutico" />
+      <nestedChildShapes>
+        <elementListCompartment Id="18ff36f9-464e-4599-a299-5521d215fc51" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.90942385047674179" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 7.125); (5.875 : 6.75); (5.875 : 4.94548666978876); (6.25 : 4.94548666978876)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DbLibraryEntityDataContext/Cliente/Cliente_Factura" />
+      <nodes>
+        <classShapeMoniker Id="d18b76ce-9099-4452-b081-550af5421d4c" />
+        <classShapeMoniker Id="6b5aa213-b26c-4965-8835-b052a787a7de" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 5.43784263240794); (5.79166666666667 : 5.43784263240794 : JumpStart); (5.95833333333333 : 5.43784263240794 : JumpEnd); (6.25 : 5.43784263240794)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DbLibraryEntityDataContext/Empleado/Empleado_Factura" />
+      <nodes>
+        <classShapeMoniker Id="71b14a7a-9561-4543-a24c-2a40ac2bfb3f" />
+        <classShapeMoniker Id="6b5aa213-b26c-4965-8835-b052a787a7de" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.96509929751356); (3.5 : 4.96509929751356)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DbLibraryEntityDataContext/Farmacia/Farmacia_Empleado" />
+      <nodes>
+        <classShapeMoniker Id="6b1cde5d-3a88-4945-894a-d47518d80504" />
+        <classShapeMoniker Id="71b14a7a-9561-4543-a24c-2a40ac2bfb3f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.875); (3.125 : 3.5); (3.125 : 1.90626141433914); (3.5 : 1.90626141433914)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DbLibraryEntityDataContext/Farmacia/Farmacia_Farmaceutico" />
+      <nodes>
+        <classShapeMoniker Id="6b1cde5d-3a88-4945-894a-d47518d80504" />
+        <classShapeMoniker Id="5822c5ae-8743-40a7-a249-fef345524375" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.45313070716957); (3.5 : 1.45313070716957)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DbLibraryEntityDataContext/Tipo_Farmaceutico/Tipo_Farmaceutico_Farmaceutico" />
+      <nodes>
+        <classShapeMoniker Id="c06ca6a2-cc05-482d-bdef-ef1458137342" />
+        <classShapeMoniker Id="5822c5ae-8743-40a7-a249-fef345524375" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

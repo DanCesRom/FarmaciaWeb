@@ -1,0 +1,99 @@
+﻿@model List<CapaDatos.Database.Factura>
+
+@{
+    ViewBag.Title = "Consultar_Factura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Factura Details";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+@if (TempData["FacturaDeletedMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FacturaDeletedMessage"]
+    </div>
+}
+
+@if (TempData["FacturaUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FacturaUpdateMessage"]
+    </div>
+}
+
+@if (TempData["FacturaRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["FacturaRegisterMessage"]
+    </div>
+}
+
+@if (TempData["FacturaRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["FacturaRegisterErrorMessage"]
+    </div>
+}
+
+
+
+@if (NivelAcceso == "1")
+
+{
+    <a href="https://localhost:44304/AddInfo/FacturaAdd"> <btn class="btn" style="color:white;  background: black">Agregar Factura</btn> </a>
+    <br />
+    <br />
+
+    <form action="/Home/DelFactura/" method="post" id="formFactura">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>ID Factura</th>
+                    <th>Codigo de Factura</th>
+                    <th>Monto</th>
+                    <th>ID Cliente</th>
+                    <th>ID Empleado</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var factura in Model) // Quitamos el "@" aquí
+                    {
+                        <tr>
+                            <td>@factura.IDfactura</td>
+                            <td>@factura.CodeFactura</td>
+                            <td>@factura.Monto</td>
+                            <td>@factura.IDcliente</td>
+                            <td>@factura.IDempleado</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/Home/EditarFactura?id=@factura.IDfactura&codefactura=@factura.CodeFactura&monto=@factura.Monto&idcliente=@factura.IDcliente&idempleado=@factura.IDempleado" class="btn btn-primary">Edit</a>
+                                    <button type="submit" name="id" value="@factura.IDfactura" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            <div>
+                                No Employees Available at this moment!
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+}
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}

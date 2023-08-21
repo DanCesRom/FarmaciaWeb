@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "EditarFactura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar Factura";
+}
+
+
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+
+<form action="/Home/UpdateFactura" method="post" id="editFactura">
+
+    <div class="mb-3">
+        <label class="form-label">Id Factura</label>
+        <input type="number" name="id_factura" value="@Request.QueryString["id"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Codigo de Factura</label>
+        <input type="text" name="codefactura_txt" class="form-control" value="@Request.QueryString["codefactura"]" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Monto</label>
+        <input type="number" name="monto_txt" class="form-control" value="@Request.QueryString["monto"]" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Id Cliente</label>
+        <input type="number" name="idcliente_txt" value="@Request.QueryString["idcliente"]" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Id Empleado</label>
+        <input type="number" name="idempleado_txt" value="@Request.QueryString["idempleado"]" class="form-control" readonly />
+    </div>
+
+    <div class="flex-column">
+        <a href="https://localhost:44304/Home/Consultar_Factura"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+        <button type="submit" for="editFactura" class="btn btn-success">Update</button>
+    </div>
+
+</form>
+
+
+
+

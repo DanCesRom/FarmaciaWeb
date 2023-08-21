@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ClienteAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Tablas</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelEmpleados">
+        <div class="panel-heading">Agregar Clientes:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+        <form action="/AddInfo/registrarCliente/" method="post" id="formCliente">
+            <a>DNI<input type="text" name="dnicliente_txt" id="dnicliente.txt" class="form-control" formmethod="post" min="0" required></a> <br />
+            <a>Nombre<input type="datetime" name="nombrecliente_txt" id="nombrecliente.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Edad<input type="number" name="edadcliente_txt" id="edadcliente.txt" class="form-control" formmethod="post" min="0" required></a> <br />
+
+            <a href="https://localhost:44304/Home/Consultar_Clientes"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+            <input for="formFarmacia" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+        </form>
+
+
+    </div>
+</div>
+
+

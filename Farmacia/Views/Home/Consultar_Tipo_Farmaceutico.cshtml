@@ -1,0 +1,103 @@
+﻿@model List<CapaDatos.Database.Tipo_Farmaceutico>
+
+@{
+    ViewBag.Title = "Consultar_Tipo_Farmaceutico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Tipo Farmaceutico Details";
+    string NivelAcceso = Session["NivelAccesso"] as string;
+}
+
+@if (TempData["TipoFarmaceuticoDeletedMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["TipoFarmaceuticoDeletedMessage"]
+    </div>
+}
+
+@if (TempData["TipoFarmaceuticoUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["TipoFarmaceuticoUpdateMessage"]
+    </div>
+}
+
+@if (TempData["TipoFarmaceuticoRegisterMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["TipoFarmaceuticoRegisterMessage"]
+    </div>
+}
+
+@if (TempData["TipoFarmaceuticoRegisterErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["TipoFarmaceuticoRegisterErrorMessage"]
+    </div>
+}
+
+
+@if (NivelAcceso == "1")
+{
+
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <p>Total Tipo Farmaceutico: @Model.Count()</p>
+
+
+    <a href="https://localhost:44304/AddInfo/TipoFarmaceuticoAdd"> <btn class="btn" style="color:white;  background: black">Agregar Tipo de Farmaceutico</btn> </a>
+    <br />
+    <br />
+
+    <form action="/Home/DelTipoFarmaceutico/" method="post" id="formFarmaceutico">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr class="table-active">
+                    <th>ID Tipo Farmaceutico</th>
+                    <th>Tipo de Farmaceutico</th>
+                    <th>Categoria</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var tipo_Farmaceutico in Model) // Quitamos el "@" aquí
+                    {
+                        <tr>
+                            <td>@tipo_Farmaceutico.ID_TF</td>
+                            <td>@tipo_Farmaceutico.Tipofarmaceutico</td>
+                            <td>@tipo_Farmaceutico.Categoria</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="/Home/EditarTipoFarmaceutico?id=@tipo_Farmaceutico.ID_TF&tipofarmaceutico=@tipo_Farmaceutico.Tipofarmaceutico&categoria=@tipo_Farmaceutico.Categoria" class="btn btn-primary">Edit</a>
+                                    <button type="submit" name="id" value="@tipo_Farmaceutico.ID_TF" class="btn btn-danger" style="margin-left:10px">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">
+                            <div>
+                                No Employees Available at this moment!
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+}
+
+
+
+else
+{
+    <h1>Acceso Restringido</h1>
+    <p>No tienes permiso para ver esta página.</p>
+}
+
+
+

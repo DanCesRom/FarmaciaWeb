@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "FarmaciaAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $('.dropdown-menu a').click(function () {
+        var selectedOption = $(this).text();
+        $('#dropdownMenuButton').text(selectedOption);
+    });
+</script>
+
+
+
+<h2>Mantenimiento de Tablas</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelEmpleados">
+        <div class="panel-heading">Agregar Farmacia:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+        <div class="col-lg-4">
+            <form action="/AddInfo/registrarFarmacia/" method="post" id="formTipoFarmacia">
+                <a>Calle<input type="text" name="callefarmacia_txt" id="calle.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Sector<input type="text" name="sectorfarmacia_txt" id="nombre_farmacia.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Provincia<input type="text" name="provinciafarmacia_txt" id="provinciafarmacia.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Telefono<input type="text" name="telefonofarmacia_txt" id="telefonofarmacia.txt" class="form-control" formmethod="post" required></a> <br />
+                <a>Estado<input type="text" name="estadofarmacia_txt" id="estadofarmacia.txt" class="form-control" formmethod="post" required></a> <br />
+
+                <a href="https://localhost:44304/Home/Consultar_Farmacia"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+                <input for="formTipoFarmacia" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+            </form>
+        </div>
+
+
+
+    </div>
+</div>

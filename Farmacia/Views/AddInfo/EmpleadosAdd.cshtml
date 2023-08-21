@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "MenuGeneral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Tablas</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelEmpleados">
+        <div class="panel-heading">Agregar Empleados:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+        <form action="/AddInfo/registrarEmpleado/" method="post" id="formEm">
+            <a>DNI<input type="text" name="dniempleado_txt" id="dniempleado.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Nombre<input type="datetime" name="nombreempleado_txt" id="nombreempleado.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID de la Farmacia<input type="text" name="idfarmaciaempleado_txt" id="idfarmaciaempleado.txt" class="form-control" formmethod="post" required></a> <br />
+
+            <a href="https://localhost:44304/Home/Consultar_Empleados"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+            <input for="formEmpleado" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+        </form>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "FarmaceuticoAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "FarmaciaAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento de Tablas</h2>
+
+<div class="col-lg-8">
+    <div class="panel panel-default" id="panelEmpleados">
+        <div class="panel-heading">Agregar Farmaceuticos:</div>
+        <hr style="width:17%;text-align:left;margin-left:0">
+        <div class="panel-body">
+            <div class="row">
+                @*Campos de Textos y Registros*@
+            </div>
+        </div>
+
+
+
+        <form action="/AddInfo/registrarFarmaceutico/" method="post" id="formTipoFarmacia">
+            <a>Nombre<input type="text" name="nombrefarmaceutico_txt" id="nombrefarmaceutico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Fecha de Vencimiento<input type="date" name="fechadevencimiento_txt" id="fechadvencimiento.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Cantidad<input type="text" name="cantidadfarmaceutico_txt" id="cantidadfarmaceutico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>Precio<input type="text" name="preciofarmaceutico_txt" id="preciofarmaceutico.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Tipo Farmaceutico<input type="text" name="id_tf_txt" id="id_tf.txt" class="form-control" formmethod="post" required></a> <br />
+            <a>ID Farmacia<input type="text" name="idfarmacia_txt" id="idfarmacia.txt" class="form-control" formmethod="post" required></a> <br />
+
+            <a href="https://localhost:44304/Home/Consultar_Farmaceutico"> <btn class="btn btn-danger" style="background:Red" required>Cancelar</btn></a>
+            <input for="formFarmacia" type="submit" value="Agregar" class="btn btn-success glyphicon glyphicon-plus" style="background: green; margin-left: 50px"> <br /> <br />
+        </form>
+
+
+    </div>
+</div>
+
